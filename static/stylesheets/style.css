@@ -82,3 +82,15 @@ body {
 .series img:hover {
     transform:  translateY(-10px);
 }
+
+.search-box {
+    background: #9c1d1d;
+    border-radius: 40px;
+}
+
+.search-btn {
+    color: darkgray;
+    border-radius: 50%;
+    background: #fff;
+    display: flex;
+}

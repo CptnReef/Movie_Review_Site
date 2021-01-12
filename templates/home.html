@@ -1,58 +1,63 @@
 {% extends 'base.html' %}
 
 {% block title %}
-Compliments
+Anonymous Movie Reviews
 {% endblock %}
 
 {% block content %}
-    <div class="container header">
-        <img src="images/profile.png" class="logo" alt="movie logo" height="90" width="270">
-        <a href="#" class="header-btn"><i class="fa fa-user"></i>Account</a>
+    <div class="container header ">
+        <a href="/"><img src="{{ url_for('static', filename='stylesheets/images/profile.png') }}" class="logo rounded" alt="movie logo" height="90" width="270"></a>
+        
+        <a href="/" class="header-btn"><i class="fa fa-user"></i>Account</a>
+
+        <!-- <form action="/" METHOD="POST" class="search-box">
+            <input class="search-txt" type="text" field="/" name='movie_title'>
+            <a href="/" class="search-btn">
+                <i class="fa fa-search"></i>
+            </a>
+        </form> -->
+
     </div>
     <div class="container movie-details">
         <div class="row">
             <div class="col-md-6 text-center">
-                <img src="images/poster.jpg" class="movie-poster" alt="IAMLEGEND">
+                <img src="{{ big_poster }}" class="movie-poster" alt="IAMLEGEND"> <br>
+                <br> {{ rate }}
             </div>
             <div class="col-md-6 right-item text-center">
-                <h1>I AM LEGEND</h1>
-                <p>
-                This is a Will Smith story before the entanglement. <br> Will Smith career was bright and shining!
-                </p>
-                <p>CAST: </p>
-                <div class="casting">
-                    <img src="images/willsmith.jpg" alt="Will Smith" title="I AM LEGEND" width="40px" height="40px">
-                    <img src="images/willsmith.jpg" alt="Will Smith" title="I AM LEGEND" width="40px" height="40px">
-                    <img src="images/Willow-Smith.jpg" alt="Willow Smith" title="I AM LEGEND" width="40px" height="40px">
-                    <img src="images/Willow-Smith.jpg" alt="Willow Smith" title="I AM LEGEND" width="40px" height="40px">
-                    <img src="images/Willow-Smith.jpg" alt="Willow Smith" title="I AM LEGEND" width="40px" height="40px">
+                {% if title == title %}
+                <h1>"{{ title }}" ({{ year }})</h1>
+                {% endif %}
+
+                <!-- <p>CAST:</p> -->
+                <div class="row">
+                    <div class="casting col-md-4">
+                        <div class="row">
+                            <div class="col-7">
+                                <!-- <img src="{{ poster }}" alt="{{ name[movie] }}" width="49px" height="67px"> -->
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <a href="#" class="review-btn"><i class="fa fa-pencil"></i>Review </a>
-                <a href="#" class="score-btn"><i class="fa fa-star"></i>Score</a>
+                <a href="movie_page" class="review-btn"><i class="fa fa-pencil"></i>Review </a>
+                <a href="movie_page" class="score-btn"><i class="fa fa-star"></i>Score</a>
+
             </div>
         </div>
     </div>
     <div class="container series">
-        <h3>Popular Movies</h3>
+        <h3>Movies</h3>
+        {% for movie in top[0:1] %}
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-6">
+        
                 <div class="row">
-                    <div class=" col-6"><img src="images/1.jpg" alt=""></div>
-                    <div class=" col-6"><img src="images/2.jpg" alt=""></div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="row">
-                    <div class=" col-6"><img src="images/3.jpg" alt=""></div>
-                    <div class=" col-6"><img src="images/4.jpg" alt=""></div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="row">
-                    <div class=" col-6"><img src="images/1.jpg" alt=""></div>
-                    <div class=" col-6"><img src="images/2.jpg" alt=""></div>
+            {% for post in poster %}
+                    <div class="col-md-4"><img src="{{ post }}" alt=""></div>
+            {% endfor %}
                 </div>
             </div>
         </div>
+        {% endfor %}
     </div>
-{% endblock %}
+{% endblock content %}

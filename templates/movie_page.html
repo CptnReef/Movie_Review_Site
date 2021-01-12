@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ title }} Anonymous Movie Reviews
+{% endblock %}
+
+{% block content %}
+
+<div class="container header">
+    <a href="/"><img src="{{ url_for('static', filename='stylesheets/images/profile.png') }}" class="logo rounded" alt="movie logo" height="90" width="270"></a>
+    <a href="/" class="header-btn"><i class="fa fa-user"></i>Account</a>
+</div>
+
+<div>
+
+    <!-- Container -->
+    <div class="container right-item">
+
+        <!-- Serie Cover -->
+        <div>
+    
+        <div class="sc-bg series" title="{{ title }}" src="{{ big_poster }}"></div>
+    
+    <!-- Serie Cover Left -->
+    <div>
+            <div class="sc-bottom">
+                <div class="scs-label">Rate : {{ rate }}</div>
+                <div data-seriesid="294" class="scs-stars seriesVotes starCounter">
+                        <!-- voted -->
+                </div>
+            </div>
+        </div>
+        <br>
+        <div>
+
+            <!-- Point Bar -->
+            <div class="scr-point-bar">
+                <a target="_blank" rel="nofollow" href="{{ title }}">
+                    <img src="{{ big_poster }}" width="40%" height="40%">
+                </a>
+            </div>
+        </div>
+</div>
+
+    <div class="reviews">
+
+    <!-- Create Review -->
+        <div >
+            <form action="#" method="post" id="episodeReviewsForm">
+            <textarea name="review" required="" id="episodeReviewMsg" class="cr-textarea" placeholder="Write a review for this episode"></textarea>
+            <input type="hidden" name="episode_id" value="436353">
+            <input type="checkbox" name="spoiler"> Includes Spoiler!
+            <div class="cr-bt">
+                <button id="episodeReviewSubmit" class="auto-button"><i class="fa fa-paper-plane"></i> Review Movie</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+
+{% endblock content %}
